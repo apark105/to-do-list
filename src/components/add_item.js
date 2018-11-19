@@ -1,6 +1,7 @@
 //building a form, need inputs. As such, we need a class component.
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'; 
 
 class AddItem extends Component {
     state = {
@@ -23,17 +24,27 @@ class AddItem extends Component {
 
     render(){
         const {title, details} = this.state;
+        console.log(this.props)
         return(
+            <div>
+                
+                <h1 className="center">Add To Do Item</h1>
+                <div className="row">
+                    <div className="col s12 right-align">
+                        <Link to="/" className="btn green-darken-2">Back to List</Link>
+                    </div>
+                </div>
+                
                 <form onSubmit={this.handleAddingitem}>
                     <div className="row">
                         <div className="input-field col s8 offset-s2">
                             <div className="input-field">
+                                <label>Title</label>
                                 <input 
                                     type="text" 
                                     value={title}
                                     onChange={e=> {this.setState({title: e.target.value})}}
                                 />
-                                <label>Title</label>
                             </div>
                         </div>
                     </div>
@@ -55,6 +66,8 @@ class AddItem extends Component {
                         </div>
                     </div>
                 </form>
+
+            </div>
         )
     }
 }
